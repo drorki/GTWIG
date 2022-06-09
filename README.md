@@ -1,6 +1,6 @@
 # GTWIG
 
-Cluster whistle traces by the Graph-based Traces to Whistles Gathering algorithm (G-TWIG)
+Cluster whistle traces by the Graph-based Traces to Whistles Gathering (G-TWIG) algorithm.
 
 This is an implementation of the algorithm in:
 D. Kipnis and R. Diamant, "Graph-Based Clustering of Dolphin Whistles." IEEE/ACM Transactions on Audio, Speech, and Language Processing 29 (2021): 2216-2227.
