@@ -12,5 +12,4 @@ http://www.ee.bilkent.edu.tr/~haldun/wileybook.html
 Alternately, you can use other implementations, or disable the trace-continuity calculation by setting: AlgParams.calcContinuityFlag=0 (which is the default)
 
 Expected results when running on demo:
-For AlgParams.calcContinuityFlag=0, there should be clusters at 56s (multipath), 66.1s and 77.6s (harmonics).
-For AlgParams.calcContinuityFlag=1, there should be clusters at 56s (multipath), 77.6s (harmonics), 84s (connectivity and harmonics) and 252.7s (connectivity) 
+For AlgParams.calcContinuityFlag=0, results are illustrated in demo.tif
