@@ -11,7 +11,8 @@
 
 
 %% --- Data files ---
-audioFileName = '2021_06_26_18_22_24_700.flac'; % 165 original traces --> 161 segmented traces (for AlgParams.calcContinuityFlag=1)
+audioFileName = '2021_06_30_18_33_31_1850_short.flac' % 48 Original Traces --> 39 Segmented Traces
+%audioFileName = '2021_06_26_18_22_24_700.flac'; % 165 original traces --> 161 segmented traces (for AlgParams.calcContinuityFlag=1)
 trackersFileName = [audioFileName(1:end-5) '_GT.mat'];
 FileParams = struct(...
         'audioPath',  '.\DEMO_DATA', ... % Directory of wav files
@@ -34,13 +35,11 @@ AlgParams = struct( ...
 [x, idxClustered] =  gtwig(audioFileName, trackersFileName, AlgParams, FileParams);
 
 
-%% -- Plot clusters ---
-plot_clusters(x, idxClustered, ['Clustering by GTWIG'], 1);
-
-
 %% -- Plot spectrogram of audio data ----
 [y, fs] = audioread([FileParams.audioPath filesep audioFileName]);
 [s,f,t] = spectrogram(y(:,1), 4096, round(4096*0.8), 4096, fs); 
-figure; imagesc(t, f/1000, 20*log10(abs(s))); colormap gray
+figHandle = figure; imagesc(t, f/1000, 20*log10(abs(s))); colormap gray
 xlabel('time [s]'); ylabel('frequency [kHz]'); axis xy
-title('Spectrogram of audio data')
+
+%% -- Plot clusters ---
+plot_clusters(x, idxClustered, figHandle, 1);

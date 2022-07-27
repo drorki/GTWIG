@@ -2,7 +2,7 @@ function plot_clusters(GT, idx, figName, markRectangleFlag)
 % Input:
 % 1) GT - array of whistle traces.
 % 2) idx - cluster index for each whistle trace
-% 3) figName - name for figure
+% 3) figName - name for figure. You can also use a valid figure handle instead to plot on an existing figure
 % 4) markRectangleFlag - 1/0 to mark/don't mark clusters by a bounding rectangle
 %
 
@@ -20,7 +20,12 @@ colorMat = [0  0.4470  0.7410; ...
 
 lineStyleCell = {'-','--','-.',':'};
 
-figure('Name', figName);
+if ishandle(figName) 
+    figure(figName);   hold on % Use existing figure
+else
+    figure('Name', figName);  % Create a new figure
+end
+
 nClusters = numel(unique(idx));
 colorInd = 0;
 lineStyleInd = 0;
@@ -67,7 +72,7 @@ for clusterCount = 1:nClusters
 end
 xlabel('time [s]'); ylabel('frequency [kHz]');
 nTrackers = length(GT);
-title([num2str(nTrackers) ' Original Trackers \rightarrow ' num2str(nClusters) ' Segmented Trackers'])
+title([num2str(nTrackers) ' Original Traces \rightarrow ' num2str(nClusters) ' Segmented Traces'])
 
 
 
